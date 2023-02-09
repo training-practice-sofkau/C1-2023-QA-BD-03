@@ -18,7 +18,7 @@ USE `Libreria` ;
 -- Table `Libreria`.`Editorial`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Libreria`.`Editorial` (
-  `nombre_cliente` VARCHAR(50) NOT NULL,
+  `nombre_editorial` VARCHAR(50) NOT NULL,
   `ciudad` VARCHAR(45) NOT NULL,
   `complemento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`nombre_cliente`))
