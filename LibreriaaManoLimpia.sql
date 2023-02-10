@@ -2,12 +2,10 @@ CREATE DATABASE  LibreriaSQL;
 
 USE libreriaSQL;
 
-
-
 -- Relacion entre cliente y telefono
 CREATE TABLE cliente(
 	cedula_cliente VARCHAR(10),
-    nombre_cliente VARCHAR(45),
+    	nombre_cliente VARCHAR(45),
     PRIMARY KEY (cedula_cliente)
 );
 
@@ -16,12 +14,13 @@ CREATE TABLE cliente(
 
 CREATE TABLE libro (
 	ISBN VARCHAR(10),
-    titulo VARCHAR(45),
+   	titulo VARCHAR(45),
     numero_paginas VARCHAR(45),
     nombre_editorial VARCHAR(50),
     PRIMARY KEY (ISBN)
 -- FOREIGN KEY (nombre_editorial) REFERENCES editorial (nombre_editorial)
 );
+
 -- se crea un indice para la tabla editorial
 ALTER TABLE editorial ADD INDEX (nombre_editorial);
 ALTER TABLE libro
@@ -62,7 +61,7 @@ CREATE TABLE libro_cliente(
 
 CREATE TABLE telefono_cliente(
 	cedula_cliente VARCHAR(10),
-    numero VARCHAR(45),
+    	numero VARCHAR(45),
     PRIMARY KEY (cedula_cliente, numero),
     FOREIGN KEY (cedula_cliente) REFERENCES cliente(cedula_cliente)
 );
