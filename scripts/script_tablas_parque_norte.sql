@@ -5,6 +5,27 @@
 -- proveedor_telefono, Brazalete_atraccion, cliente_correo.
 -- -----------------------------------------------------------------------------------------
 
+-- -----------------------------------------------------------------------
+-- Se crea la tabla Proveedor
+-- -------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS parque_norte.Proveedor (
+	id VARCHAR(10) NOT NULL,
+    direccion VARCHAR(45) NOT NULL,
+    nombre VARCHAR(45) NOT NULL,
+    PRIMARY KEY (id));
+    
+-- -------------------------------------------------------
+-- Se crea la tabla Atraccion
+-- ------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS parque_norte.Atraccion (
+	id VARCHAR(10) NOT NULL,
+    tipo_atraccion VARCHAR(45) NOT NULL,
+    nombre VARCHAR(45) NOT NULL,
+    proveedor_id VARCHAR(10) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (proveedor_id) REFERENCES parque_norte.Proveedor (id));
 -- -----------------------------------------------------
 -- Se crea la tabla Tecnico
 -- ------------------------------------------------------
@@ -37,7 +58,9 @@ CREATE TABLE IF NOT EXISTS parque_norte.Orden_servicio (
     fecha_inicial VARCHAR(45) NOT NULL,
     fecha_final VARCHAR(45) NOT NULL,
     costo_mantenimiento INT NOT NULL,
-    PRIMARY KEY (numero_orden));
+    id_atraccion VARCHAR(10) NOT NULL,
+    PRIMARY KEY (numero_orden),
+    FOREIGN KEY (id_atraccion) REFERENCES parque_norte.Atraccion (id));
     
 -- ------------------------------------------------------------------------------------
 -- Se crea la tabla intermedia Tecnico_orden_servicio para la relación N:M entre
@@ -50,28 +73,6 @@ CREATE TABLE IF NOT EXISTS parque_norte.Tecnico_orden_servicio (
     PRIMARY KEY (Tecnico_id, numero_orden_servicio),
     FOREIGN KEY (Tecnico_id) REFERENCES parque_norte.Tecnico (id),
     FOREIGN KEY (numero_orden_servicio) REFERENCES parque_norte.Orden_servicio (numero_orden));
-    
--- -----------------------------------------------------------------------
--- Se crea la tabla Proveedor
--- -------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS parque_norte.Proveedor (
-	id VARCHAR(10) NOT NULL,
-    direccion VARCHAR(45) NOT NULL,
-    nombre VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id));
-    
--- -------------------------------------------------------
--- Se crea la tabla Atraccion
--- ------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS parque_norte.Atraccion (
-	id VARCHAR(10) NOT NULL,
-    tipo_atraccion VARCHAR(45) NOT NULL,
-    nombre VARCHAR(45) NOT NULL,
-    proveedor_id VARCHAR(10) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (proveedor_id) REFERENCES parque_norte.Proveedor (id));
     
 -- ---------------------------------------------------------------------------------------------------
 -- Se crea la tabla de detalle del atributo multivaluado telefono, perteneciente a tabla Proveedor
