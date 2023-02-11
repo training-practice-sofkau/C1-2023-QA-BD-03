@@ -127,4 +127,29 @@ CREATE TABLE IF NOT EXISTS parque_norte.Cliente_correo (
     correo VARCHAR(45) NOT NULL,
     PRIMARY KEY (cliente_cedula, correo),
     FOREIGN KEY (cliente_cedula) REFERENCES parque_norte.Cliente (cedula));
+    
+-- ---------------------------------------------------------------------------
+-- Se crea la tabla Empleado
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS parque_norte.Empleado (
+	id VARCHAR(15) NOT NULL,
+    salario INT NOT NULL,
+    correo VARCHAR(45) NOT NULL,
+    nombre VARCHAR(45) NOT NULL,
+    direccion VARCHAR(45) NOT NULL,
+    atraccion_id VARCHAR(10),
+    PRIMARY KEY (id),
+    FOREIGN KEY (atraccion_id) REFERENCES parque_norte.Atraccion (id));
+    
+-- -------------------------------------------------------------------------------------
+-- Se crea la tabla de detalle empleado_telefono para el atributo multivaluado telefono
+-- perteneciente a la entidad Empleado
+-- ---------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS parque_norte.Empleado_telefono (
+	empleado_id VARCHAR(15) NOT NULL,
+	telefono VARCHAR(15) NOT NULL,
+    PRIMARY KEY (empleado_id, telefono),
+    FOREIGN KEY (empleado_id) REFERENCES parque_norte.Empleado (id));
 	
