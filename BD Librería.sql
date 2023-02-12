@@ -1,5 +1,5 @@
 -- -----------------------------------------------------
--- Table parquenorte.cliente
+-- Table libreria.editorial
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS libreria.editorial(
 id VARCHAR (12),
@@ -9,7 +9,7 @@ complemento VARCHAR(45),
 PRIMARY KEY (id)
 );
 -- -----------------------------------------------------
--- Table parquenorte.libro
+-- Table libreria.libro
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS libreria.libro(
 ISBN VARCHAR(10),
@@ -17,10 +17,10 @@ titulo VARCHAR(45),
 numeroPaginas INT,
 idEditorial VARCHAR(50),
 PRIMARY KEY (ISBN),
-	  FOREIGN KEY (idEditorial) REFERENCES editorial(id)
+      FOREIGN KEY (idEditorial) REFERENCES editorial(id)
 );
 -- -----------------------------------------------------
--- Table parquenorte.cliente
+-- Table libreria.cliente
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS libreria.cliente(
@@ -31,28 +31,28 @@ apellido VARCHAR (45),
 PRIMARY KEY (id)
 );
 -- -----------------------------------------------------
--- Table parquenorte.telefonoCliente
+-- Table libreria.telefonoCliente
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS libreria.telefonoCliente(
 telefono VARCHAR(15),
 idCliente VARCHAR(10),
-	FOREIGN KEY (idCliente) REFERENCES cliente(id)
+    FOREIGN KEY (idCliente) REFERENCES cliente(id)
 ); 
 -- -----------------------------------------------------
--- Table parquenorte.libroCliente
+-- Table libreria.libroCliente
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS libreria.libroCliente(
 ISBN_libroCliente VARCHAR(10),
 idCliente VARCHAR (10),
-	FOREIGN KEY (ISBN_libroCliente) REFERENCES libro(ISBN),
+    FOREIGN KEY (ISBN_libroCliente) REFERENCES libro(ISBN),
     FOREIGN KEY (idCliente) REFERENCES cliente(id)
 );
 -- -----------------------------------------------------
 -- Table librera.autor
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS libreria.autor(
-	id VARCHAR(10),
+    id VARCHAR(10),
     fechaNacimiento DATE,
     nacionalidad VARCHAR(45),
     PRIMARY KEY (id)
@@ -61,8 +61,8 @@ CREATE TABLE IF NOT EXISTS libreria.autor(
 -- Table librera.libroAutor
 -- -----------------------------------------------------
 CREATE TABLE  IF NOT EXISTS libreria.libroAutor(
-	ISBN_libroAutor VARCHAR (10),
+    ISBN_libroAutor VARCHAR (10),
     idAutor VARCHAR(10),
-		FOREIGN KEY (ISBN_libroAutor) REFERENCES libro(ISBN),
-		FOREIGN KEY (idAutor) REFERENCES autor(id)
+        FOREIGN KEY (ISBN_libroAutor) REFERENCES libro(ISBN),
+        FOREIGN KEY (idAutor) REFERENCES autor(id)
 );
