@@ -51,15 +51,14 @@ CREATE TABLE libro_Autores (
  );
 
 INSERT INTO Autores (Id_Autor, Nombre, fecha_de_nacimiento, Nacionalidad)
-VALUES ('1', 'Rafael Chaparro' ,'23 de noviembre de 1996', 'Colombiano'), 
-('2', 'Dante Alighieri', '17 de septiembre de 2005', 'Colombiana'), 
-('3', 'Patrick Süskind', '6 de Septiembre de 2002', 'Colombiana');
+VALUES ('1', 'Rafael Chaparro Madiedo' ,'23 de noviembre de 1996', 'Colombiano'), 
+('2', 'Dante Alighieri', '17 de septiembre de 2005', 'Colombiana'), ('3', 'Patrick Süskind', '6 de Septiembre de 2002', 'Colombiana');
 SELECT *
 FROM Autores;
 
 
 INSERT INTO Libro (ISBN, titulo, numero_paginas, Id_Editorial_FK)
-VALUES ('122334', 'Opio en las Nubes', '181', '1'), ('143212', 'La divina Comedia', '300', '2');
+VALUES ('122334', 'Opio en las Nubes', 181, '1'), ('143212', 'La divina Comedia', 300, '2'), ('154321', 'El Perfume', 400, '3');
 SELECT *
 FROM Libro;
 
